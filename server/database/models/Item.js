@@ -1,4 +1,5 @@
 const { Model, DataTypes } = require('sequelize');
+const sequelize = require('../connection');
 
 class Item extends Model {}
 
@@ -14,7 +15,7 @@ Item.init(
       type: DataTypes.INTEGER,
       allowNull: false,
       references: {
-        model: 'list',
+        model: 'lists',
         key: 'id',
       },
     },
