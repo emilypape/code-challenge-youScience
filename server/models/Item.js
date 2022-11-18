@@ -10,6 +10,14 @@ Item.init(
       primaryKey: true,
       autoIncrement: true,
     },
+    list_id: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      references: {
+        model: 'list',
+        key: 'id',
+      },
+    },
     item_name: {
       type: DataTypes.STRING(32),
       allowNull: false,
@@ -24,7 +32,7 @@ Item.init(
       allowNull: false,
       validate: {
         checkStatus(value) {
-          if (value.length !== 'New' || 'Complete' || 'In Progress') {
+          if (value !== 'New' || 'Complete' || 'In Progress') {
             throw new Error('Staus must be "New", "Complete" or "In Progress"!!');
           }
         },
