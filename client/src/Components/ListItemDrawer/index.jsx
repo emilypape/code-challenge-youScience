@@ -8,7 +8,7 @@ import { blueGrey } from '@mui/material/colors';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import { bgcolor, color, margin } from '@mui/system';
-import { ClassNames } from '@emotion/react';
+import Button from '@mui/material/Button';
 
 export function ListItemDrawer({ drawerOpen, setDrawerOpen, selectedItem }) {
   const defaultState = {
@@ -38,7 +38,7 @@ export function ListItemDrawer({ drawerOpen, setDrawerOpen, selectedItem }) {
         <div>{selectedItem.name}</div>
         <div className='drawer-description'>{selectedItem.description}</div>
       </div>
-      <Box sx={{ marginTop: 2, marginLeft: 2, marginRight: 2 }}>
+      <Box sx={{ input: { color: 'white' }, marginTop: 2, marginLeft: 2, marginRight: 2 }}>
         <div> Item Name</div>
         <TextField sx={{ width: '100%' }} id='standard-basic' variant='standard' />
         <FormControl sx={{ marginBottom: 2 }}>
@@ -60,22 +60,23 @@ export function ListItemDrawer({ drawerOpen, setDrawerOpen, selectedItem }) {
           value={value}
           onChange={handleChange}
         />
+        <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-end' }}>
+          <Checkbox value={false} />
+          <div>Viewed</div>
+        </Box>
       </Box>
-
-      {/* <Input name='name' value='' onChange={() => {}} />
-      <label>Description</label>
-      <input name='somethingElse' value={defaultState.name} type='text' onChange={() => {}} />
-      <FormLabel>This is a label</FormLabel>
-      <Checkbox value={false} />
-      <RadioGroup name='status' value={defaultState.status}>
-        <FormControlLabel value='' label='option' control={<Radio />} />
-        <label>
-          {' '}
-          this is a label
-          <Radio />
-        </label>
-        <Radio checked onChange={() => {}} value='a' name='radio-button-demo' />
-      </RadioGroup> */}
+      <Button
+        onClick={() => setDrawerOpen(false)}
+        style={{
+          boxShadow: 'none',
+          borderRadius: '0px',
+          position: 'absolute',
+          bottom: 0,
+          width: '100%',
+        }}
+        variant='contained'>
+        Close
+      </Button>
     </Drawer>
   );
 }
