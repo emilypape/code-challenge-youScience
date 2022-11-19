@@ -1,20 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { List, ListItem } from '@mui/material';
 import { ListItemDrawer } from '../ListItemDrawer';
+import { bgcolor, Box } from '@mui/system';
 import LoadingPage from '../LoadingPage/LoadingPage.jsx';
-import { styled } from '@mui/material/styles';
-import Box from '@mui/material/Box';
 import ListItemAvatar from '@mui/material/ListItemAvatar';
-import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import Avatar from '@mui/material/Avatar';
 import IconButton from '@mui/material/IconButton';
-import FormGroup from '@mui/material/FormGroup';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import Checkbox from '@mui/material/Checkbox';
 import Grid from '@mui/material/Grid';
-import Typography from '@mui/material/Typography';
-import FolderIcon from '@mui/icons-material/Folder';
 import DeleteIcon from '@mui/icons-material/Delete';
 
 export function CustomList() {
@@ -90,18 +83,22 @@ export function CustomList() {
     <div>
       <List>
         {listItems.map((item, i) => (
+          // use material ui list component for our generated list
           <Grid item xs={12} md={6}>
             <List>
-              <ListItem>
-                <ListItemText primary={item.name} onClick={() => handleItemClick(item)} key={`${item.name}-${i}`} />
-                <ListItemAvatar>
-                  <Avatar>
-                    <IconButton aria-label='delete'>
-                      <DeleteIcon />
-                    </IconButton>
-                  </Avatar>
-                </ListItemAvatar>
-              </ListItem>
+              <Box>
+                <ListItem>
+                  <ListItemText primary={item.name} onClick={() => handleItemClick(item)} key={`${item.name}-${i}`} />
+                  <ListItemAvatar>
+                    <Avatar>
+                      <IconButton aria-label='delete'>
+                        {/* come back and add delete functionality to the trash can */}
+                        <DeleteIcon />
+                      </IconButton>
+                    </Avatar>
+                  </ListItemAvatar>
+                </ListItem>
+              </Box>
             </List>
           </Grid>
         ))}
