@@ -10,8 +10,7 @@ export default function App() {
         position='fixed'
         style={{
           backgroundColor: 'blue',
-        }}
-      >
+        }}>
         <Toolbar>
           <Typography variant='h6' noWrap>
             My List Of Stuff
