@@ -20,8 +20,7 @@ export function ListItemDrawer(props) {
       onClose={openDrawer}
       anchor='right'
       variant='persistent'
-      style={{ width: 200, flexShrink: 0 }}
-    >
+      style={{ width: 200, flexShrink: 0 }}>
       <h2>This is the drawer</h2>
       <Input name='name' value='' onChange={() => {}} />
       <label>Description</label>
