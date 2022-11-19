@@ -3,6 +3,7 @@ const app = express();
 const port = 8080;
 const { List, Item } = require('./database/models/index');
 const sequelize = require('./database/connection');
+const routes = require('./database/controllers/index');
 
 sequelize.sync({ force: false }).then(() => {
   console.log('Sequelize is synchronized');
@@ -11,3 +12,5 @@ sequelize.sync({ force: false }).then(() => {
 app.listen(port, () => {
   console.log(`listening on port ${port}`);
 });
+
+app.use(routes);
