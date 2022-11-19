@@ -33,8 +33,8 @@ Item.init(
       allowNull: false,
       validate: {
         checkStatus(value) {
-          if (value !== 'New' || 'Complete' || 'In Progress') {
-            throw new Error('Staus must be "New", "Complete" or "In Progress"!!');
+          if (value !== 'New' || value !== 'Complete' || value !== 'In Progress') {
+            throw new Error('Status must be "New", "Complete" or "In Progress"!!');
           }
         },
       },

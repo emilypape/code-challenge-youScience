@@ -3,7 +3,7 @@ const sequelize = require('../connection');
 const { List, Item } = require('../models');
 
 //route that finds a list and returns all of its items with their name and status
-router.get('/list', async (req, res) => {
+router.get('/list', (req, res) => {
   List.findAll({
     attributes: ['list_name'],
     include: {
@@ -32,4 +32,17 @@ router.get('/item/:id', (req, res) => {
     });
 });
 
+router.post('/item', (req, res) => {
+  Item.create({
+    list_id: req.body.list_id,
+    item_name: req.body.item_name,
+    item_description: req.body.item_description,
+    status: req.body.status,
+  })
+    .then((data) => res.json(data))
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json(err);
+    });
+});
 module.exports = router;

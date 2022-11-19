@@ -6,8 +6,5 @@
   "repository": "https://github.com/YouScience/code-challenge",
   "author": "Brandon Allred <brandon.allred@youscience.com>",
   "license": "MIT",
-  "private": true,
-  "dependencies": {
-    "nodemon": "^2.0.20"
-  }
+  "private": true
 }
