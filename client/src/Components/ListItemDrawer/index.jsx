@@ -4,9 +4,7 @@
 import React from 'react';
 import { Checkbox, Drawer, FormControlLabel, FormLabel, Input, Radio, RadioGroup } from '@mui/material';
 
-export function ListItemDrawer(props) {
-  const [drawerOpen, openDrawer] = React.useState(true);
-
+export function ListItemDrawer({ drawerOpen, setDrawerOpen, selectedItem }) {
   const defaultState = {
     name: '',
     viewed: 'false',
@@ -17,7 +15,7 @@ export function ListItemDrawer(props) {
   return (
     <Drawer
       open={drawerOpen}
-      onClose={openDrawer}
+      onClose={setDrawerOpen}
       anchor='right'
       variant='persistent'
       style={{ width: 200, flexShrink: 0 }}>

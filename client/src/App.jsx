@@ -7,7 +7,7 @@ export default function App() {
   return (
     <div>
       <AppBar
-        position='fixed'
+        position='relative'
         style={{
           backgroundColor: 'blue',
         }}>
