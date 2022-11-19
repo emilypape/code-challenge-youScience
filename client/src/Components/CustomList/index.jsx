@@ -1,6 +1,21 @@
 import React, { useEffect, useState } from 'react';
 import { List, ListItem } from '@mui/material';
 import { ListItemDrawer } from '../ListItemDrawer';
+import LoadingPage from '../LoadingPage/LoadingPage.jsx';
+import { styled } from '@mui/material/styles';
+import Box from '@mui/material/Box';
+import ListItemAvatar from '@mui/material/ListItemAvatar';
+import ListItemIcon from '@mui/material/ListItemIcon';
+import ListItemText from '@mui/material/ListItemText';
+import Avatar from '@mui/material/Avatar';
+import IconButton from '@mui/material/IconButton';
+import FormGroup from '@mui/material/FormGroup';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import Checkbox from '@mui/material/Checkbox';
+import Grid from '@mui/material/Grid';
+import Typography from '@mui/material/Typography';
+import FolderIcon from '@mui/icons-material/Folder';
+import DeleteIcon from '@mui/icons-material/Delete';
 
 export function CustomList() {
   // Default drawer state to closed
@@ -62,22 +77,33 @@ export function CustomList() {
     replaceMeWithAFetchLater();
   }, []);
 
-  // Set the selected item in state and open the drawer to show the item details
+  // Set the selected item in state and open the drawer to show the item details when list item is clicked on
   function handleItemClick(item) {
     setSelectedItem(item);
     setDrawerOpen(true);
   }
 
   // Be sure to indicate a "loading" state to the UI
-  if (!listItems.length) return <div>Loading...</div>; // TODO: Replace with a loading component
+  if (!listItems.length) return <LoadingPage />; // TODO: Replace with a loading component
 
   return (
     <div>
       <List>
         {listItems.map((item, i) => (
-          <ListItem onClick={() => handleItemClick(item)} key={`${item.name}-${i}`}>
-            {item.name}
-          </ListItem>
+          <Grid item xs={12} md={6}>
+            <List>
+              <ListItem>
+                <ListItemText primary={item.name} onClick={() => handleItemClick(item)} key={`${item.name}-${i}`} />
+                <ListItemAvatar>
+                  <Avatar>
+                    <IconButton aria-label='delete'>
+                      <DeleteIcon />
+                    </IconButton>
+                  </Avatar>
+                </ListItemAvatar>
+              </ListItem>
+            </List>
+          </Grid>
         ))}
       </List>
       <ListItemDrawer selectedItem={selectedItem} drawerOpen={drawerOpen} setDrawerOpen={setDrawerOpen} />
