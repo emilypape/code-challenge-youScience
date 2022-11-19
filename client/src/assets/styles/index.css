@@ -24,6 +24,15 @@ img {
 
 .drawer-header {
   background-color: #37474f;
-  padding: 1.75em;
-  font-size: 12pt;
+  padding: 1em;
+  font-size: 14pt;
+}
+
+.drawer-description {
+  font-size: 11pt;
+  padding-top: 0.5em;
+}
+
+.item-name-input {
+  color: white;
 }
