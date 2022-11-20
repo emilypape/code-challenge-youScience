@@ -122,21 +122,23 @@ export function CustomList() {
       <List>
         {listItems.map((item, i) => (
           // use material ui list component for our generated list
-          <Fade in timeout={1500}>
-            <ListItem key={`${item.name}-${i}`} alignItems={'center'}>
-              <Tooltip title={item.status}>
-                <CircleIcon fontSize={''} htmlColor={colors[item.status]} />
-              </Tooltip>
-              <ListItemText primary={item.name} onClick={() => handleItemClick(item)} />
-              <Avatar>
-                <Tooltip title={'Delete'}>
-                  <IconButton aria-label='delete' onClick={() => handleItemDelete(item.id)}>
-                    <DeleteIcon />
-                  </IconButton>
+          <div key={`${item.name}-${i}`}>
+            <Fade in timeout={1500}>
+              <ListItem alignItems={'center'}>
+                <Tooltip title={item.status}>
+                  <CircleIcon fontSize={''} htmlColor={colors[item.status]} />
                 </Tooltip>
-              </Avatar>
-            </ListItem>
-          </Fade>
+                <ListItemText primary={item.name} onClick={() => handleItemClick(item)} />
+                <Avatar>
+                  <Tooltip title={'Delete'}>
+                    <IconButton aria-label='delete' onClick={() => handleItemDelete(item.id)}>
+                      <DeleteIcon />
+                    </IconButton>
+                  </Tooltip>
+                </Avatar>
+              </ListItem>
+            </Fade>
+          </div>
         ))}
       </List>
       <ListItemDrawer

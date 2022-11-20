@@ -89,7 +89,15 @@ export function ListItemDrawer({ drawerOpen, setDrawerOpen, selectedItem, listIt
         <div className='drawer-description'>{description}</div>
       </div>
       {/* create a form that holds the inputs for updating the item data */}
-      <Box sx={{ input: { color: 'white' }, marginTop: 2, marginLeft: 2, marginRight: 2 }}>
+      <Box
+        sx={{
+          input: { color: 'white' },
+          textArea: { color: 'white' },
+          label: { color: 'white' },
+          marginTop: 2,
+          marginLeft: 2,
+          marginRight: 2,
+        }}>
         <div> Item Name</div>
         <TextField
           inputProps={{ maxLength: 32 }}
@@ -100,7 +108,7 @@ export function ListItemDrawer({ drawerOpen, setDrawerOpen, selectedItem, listIt
           variant='standard'
         />
         <FormControl sx={{ marginBottom: 2 }}>
-          <FormLabel sx={{ color: 'white', width: '100%', marginTop: 2 }} id='demo-row-radio-buttons-group-label'>
+          <FormLabel sx={{ width: '100%', marginTop: 2 }} id='demo-row-radio-buttons-group-label'>
             Status
           </FormLabel>
           <RadioGroup
@@ -129,7 +137,7 @@ export function ListItemDrawer({ drawerOpen, setDrawerOpen, selectedItem, listIt
         </FormControl>
         <div>Item Description</div>
         <TextField
-          sx={{ input: { color: 'white' }, width: '100%', marginTop: 0.5 }}
+          sx={{ width: '100%', marginTop: 0.5 }}
           id='outlined-multiline-static'
           inputProps={{ maxLength: 100 }}
           multiline
