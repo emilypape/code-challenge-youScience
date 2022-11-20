@@ -109,9 +109,22 @@ export function ListItemDrawer({ drawerOpen, setDrawerOpen, selectedItem, listIt
             name='row-radio-buttons-group'
             value={status}
             onChange={updateStatus}>
-            <FormControlLabel value='New' control={<Radio />} label='New' />
+            <FormControlLabel
+              value='New'
+              control={<Radio disabled={selectedItem.status === 'Complete'} />}
+              label='New'
+            />
+            <FormControlLabel
+              value='In Progress'
+              control={<Radio disabled={selectedItem.status === 'Complete'} />}
+              label='In Progress'
+            />
             <FormControlLabel value='Complete' control={<Radio />} label='Complete' />
-            <FormControlLabel value='In Progress' control={<Radio />} label='In Progress' />
+            <FormControlLabel
+              value='Archived'
+              control={<Radio disabled={selectedItem.status === 'Complete'} />}
+              label='Archived'
+            />
           </RadioGroup>
         </FormControl>
         <div>Item Description</div>

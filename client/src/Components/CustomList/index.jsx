@@ -1,16 +1,16 @@
 import React, { useEffect, useState } from 'react';
 import { List, ListItem } from '@mui/material';
 import { ListItemDrawer } from '../ListItemDrawer';
-import { bgcolor, Box } from '@mui/system';
 import LoadingPage from '../LoadingPage/LoadingPage.jsx';
-import ListItemAvatar from '@mui/material/ListItemAvatar';
 import ListItemText from '@mui/material/ListItemText';
 import Avatar from '@mui/material/Avatar';
 import IconButton from '@mui/material/IconButton';
-import Grid from '@mui/material/Grid';
 import DeleteIcon from '@mui/icons-material/Delete';
 import { green } from '@mui/material/colors';
 import Button from '@mui/material/Button';
+import CircleIcon from '@mui/icons-material/Circle';
+import Tooltip from '@mui/material/Tooltip';
+import Fade from '@mui/material/Fade';
 
 export function CustomList() {
   // Default drawer state to closed
@@ -65,6 +65,12 @@ export function CustomList() {
     },
   ];
 
+  const colors = {
+    New: 'white',
+    'In Progress': 'yellow',
+    Complete: 'green',
+    Archived: 'red',
+  };
   useEffect(() => {
     // Create a function that mocks an asynchronous get request.
     // This should resolve 2 seconds after the page is initially loaded and return your mock data set.
@@ -116,16 +122,21 @@ export function CustomList() {
       <List>
         {listItems.map((item, i) => (
           // use material ui list component for our generated list
-          <ListItem key={`${item.name}-${i}`}>
-            <ListItemText primary={item.name} onClick={() => handleItemClick(item)} />
-            <ListItemAvatar>
+          <Fade in timeout={1500}>
+            <ListItem key={`${item.name}-${i}`} alignItems={'center'}>
+              <Tooltip title={item.status}>
+                <CircleIcon fontSize={''} htmlColor={colors[item.status]} />
+              </Tooltip>
+              <ListItemText primary={item.name} onClick={() => handleItemClick(item)} />
               <Avatar>
-                <IconButton aria-label='delete' onClick={() => handleItemDelete(item.id)}>
-                  <DeleteIcon />
-                </IconButton>
+                <Tooltip title={'Delete'}>
+                  <IconButton aria-label='delete' onClick={() => handleItemDelete(item.id)}>
+                    <DeleteIcon />
+                  </IconButton>
+                </Tooltip>
               </Avatar>
-            </ListItemAvatar>
-          </ListItem>
+            </ListItem>
+          </Fade>
         ))}
       </List>
       <ListItemDrawer
@@ -135,20 +146,22 @@ export function CustomList() {
         listItems={listItems}
         setListItems={setListItems}
       />
-      <Button
-        style={{
-          boxShadow: 'none',
-          borderRadius: '0px',
-          position: 'absolute',
-          bottom: 20,
-          width: '10%',
-          background: green[500],
-          borderRadius: '.5em',
-        }}
-        variant='contained'
-        onClick={handleItemCreate}>
-        New Item
-      </Button>
+      <Fade in timeout={1500}>
+        <Button
+          style={{
+            boxShadow: 'none',
+            borderRadius: '0px',
+            position: 'absolute',
+            bottom: 20,
+            width: '10%',
+            background: green[500],
+            borderRadius: '.5em',
+          }}
+          variant='contained'
+          onClick={handleItemCreate}>
+          New Item
+        </Button>
+      </Fade>
     </div>
   );
 }
