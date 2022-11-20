@@ -9,16 +9,18 @@ import Avatar from '@mui/material/Avatar';
 import IconButton from '@mui/material/IconButton';
 import Grid from '@mui/material/Grid';
 import DeleteIcon from '@mui/icons-material/Delete';
+import NewItem from '../NewItem/NewItem';
 
 export function CustomList() {
   // Default drawer state to closed
   const [drawerOpen, setDrawerOpen] = React.useState(false);
   // Pull default item state up from ListITemDrawer
   const [selectedItem, setSelectedItem] = useState({
+    id: null,
     name: '',
-    viewed: 'false',
+    viewed: false,
     description: '',
-    status: false,
+    status: '',
   });
   // Default to an empty list for conditional rendering
   const [listItems, setListItems] = useState([]);
@@ -26,34 +28,39 @@ export function CustomList() {
   // TODO: replace with a fetch to backend
   const mockData = [
     {
+      id: 1,
       name: 'Example Item 1',
       viewed: false,
       description: 'This is an example item for frontend development',
-      status: 'new',
+      status: 'New',
     },
     {
+      id: 2,
       name: 'Example Item 2',
       viewed: false,
       description: 'This is an example item for frontend development',
-      status: 'new',
+      status: 'New',
     },
     {
+      id: 3,
       name: 'Example Item 3',
       viewed: false,
       description: 'This is an example item for frontend development',
-      status: 'new',
+      status: 'New',
     },
     {
+      id: 4,
       name: 'Example Item 4',
       viewed: false,
       description: 'This is an example item for frontend development',
-      status: 'new',
+      status: 'New',
     },
     {
+      id: 5,
       name: 'Example Item 5',
       viewed: false,
       description: 'This is an example item for frontend development',
-      status: 'new',
+      status: 'New',
     },
   ];
 
@@ -76,6 +83,13 @@ export function CustomList() {
     setDrawerOpen(true);
   }
 
+  function handleItemDelete(itemId) {
+    // TODO: Make an api request to delete item from database
+    // upon a succesful response from our server indicating that an item has been deleted
+    // delete the item from state
+    setListItems(listItems.filter((item) => item.id !== itemId));
+  }
+
   // Be sure to indicate a "loading" state to the UI
   if (!listItems.length) return <LoadingPage />; // TODO: Replace with a loading component
 
@@ -84,26 +98,26 @@ export function CustomList() {
       <List>
         {listItems.map((item, i) => (
           // use material ui list component for our generated list
-          <Grid item xs={12} md={6}>
-            <List>
-              <Box>
-                <ListItem>
-                  <ListItemText primary={item.name} onClick={() => handleItemClick(item)} key={`${item.name}-${i}`} />
-                  <ListItemAvatar>
-                    <Avatar>
-                      <IconButton aria-label='delete'>
-                        {/* come back and add delete functionality to the trash can */}
-                        <DeleteIcon />
-                      </IconButton>
-                    </Avatar>
-                  </ListItemAvatar>
-                </ListItem>
-              </Box>
-            </List>
-          </Grid>
+          <ListItem key={`${item.name}-${i}`}>
+            <ListItemText primary={item.name} onClick={() => handleItemClick(item)} />
+            <ListItemAvatar>
+              <Avatar>
+                <IconButton aria-label='delete' onClick={() => handleItemDelete(item.id)}>
+                  <DeleteIcon />
+                </IconButton>
+              </Avatar>
+            </ListItemAvatar>
+          </ListItem>
         ))}
       </List>
-      <ListItemDrawer selectedItem={selectedItem} drawerOpen={drawerOpen} setDrawerOpen={setDrawerOpen} />
+      <ListItemDrawer
+        selectedItem={selectedItem}
+        drawerOpen={drawerOpen}
+        setDrawerOpen={setDrawerOpen}
+        listItems={listItems}
+        setListItems={setListItems}
+      />
+      <NewItem drawerOpen={drawerOpen} setDrawerOpen={setDrawerOpen} />
     </div>
   );
 }
