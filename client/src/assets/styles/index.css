@@ -2,6 +2,10 @@
   box-sizing: border-box;
 }
 
+body {
+  background-color: #263238;
+}
+
 #root {
   min-height: 100vh;
   display: grid;
@@ -16,4 +20,19 @@ a {
 
 img {
   max-width: 100%;
+}
+
+.drawer-header {
+  background-color: #37474f;
+  padding: 1em;
+  font-size: 14pt;
+}
+
+.drawer-description {
+  font-size: 11pt;
+  padding-top: 0.5em;
+}
+
+.item-name-input {
+  color: white;
 }

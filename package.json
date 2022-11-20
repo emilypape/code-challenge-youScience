@@ -7,5 +7,5 @@
   "author": "Brandon Allred <brandon.allred@youscience.com>",
   "license": "MIT",
   "private": true,
-  "dependencies": {}
+  "devDependencies": {}
 }
