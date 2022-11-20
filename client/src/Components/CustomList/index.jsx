@@ -9,7 +9,8 @@ import Avatar from '@mui/material/Avatar';
 import IconButton from '@mui/material/IconButton';
 import Grid from '@mui/material/Grid';
 import DeleteIcon from '@mui/icons-material/Delete';
-import NewItem from '../NewItem/NewItem';
+import { green } from '@mui/material/colors';
+import Button from '@mui/material/Button';
 
 export function CustomList() {
   // Default drawer state to closed
@@ -90,8 +91,25 @@ export function CustomList() {
     setListItems(listItems.filter((item) => item.id !== itemId));
   }
 
+  function handleItemCreate() {
+    // TODO: Make an api request to create a new item with default values
+    // this will allow us to easily create an id for the items and remove bloated logic here in the front end
+    const newDefaultItem = {
+      // Check for biggest id and add one to avoid id collisions
+      id: Math.max(...listItems.map((item) => item.id)) + 1,
+      name: 'New Item',
+      description: 'Describe Me',
+      status: 'New',
+      viewed: false,
+    };
+
+    // update state to include all old items and new default item
+    setListItems([...listItems, newDefaultItem]);
+    handleItemClick(newDefaultItem);
+  }
+
   // Be sure to indicate a "loading" state to the UI
-  if (!listItems.length) return <LoadingPage />; // TODO: Replace with a loading component
+  if (!listItems.length) return <LoadingPage />;
 
   return (
     <div>
@@ -117,7 +135,20 @@ export function CustomList() {
         listItems={listItems}
         setListItems={setListItems}
       />
-      <NewItem drawerOpen={drawerOpen} setDrawerOpen={setDrawerOpen} />
+      <Button
+        style={{
+          boxShadow: 'none',
+          borderRadius: '0px',
+          position: 'absolute',
+          bottom: 20,
+          width: '10%',
+          background: green[500],
+          borderRadius: '.5em',
+        }}
+        variant='contained'
+        onClick={handleItemCreate}>
+        New Item
+      </Button>
     </div>
   );
 }

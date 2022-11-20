@@ -131,7 +131,12 @@ export function ListItemDrawer({ drawerOpen, setDrawerOpen, selectedItem, listIt
         {loading ? (
           <LoadingPage />
         ) : (
-          <Button onClick={handleDone} variant='contained'>
+          <Button
+            onClick={handleDone}
+            variant='contained'
+            style={{
+              width: '100%',
+            }}>
             Done
           </Button>
         )}
