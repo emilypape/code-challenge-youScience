@@ -25,6 +25,8 @@ export function ListItemDrawer({ drawerOpen, setDrawerOpen, selectedItem, listIt
   };
 
   const updateStatus = (event) => {
+    if (selectedItem.status === 'Complete') return;
+
     setStatus(event.target.value);
   };
 
