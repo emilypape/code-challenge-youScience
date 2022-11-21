@@ -19,7 +19,8 @@ https://emotion.sh/docs/introduction
    * Bonus - Create a function that returns a new Data set with the attributes specified above
 
 2. Create a function that mocks an asynchronous get request. This should resolve 2 seconds after the page is initially loaded and return your mock data set. Be sure to indicate a "loading" state to the UI.
-    - Another option would be to build out an express server that would return this data for you. [Back end instructions](../backend/README.md)
+
+   - Another option would be to build out an express server that would return this data for you. [Back end instructions](../backend/README.md)
 
 3. Display your generated data in a list/table, make each item/row clickable. When one of these rows/items are clicked, store this selected value in state.
 

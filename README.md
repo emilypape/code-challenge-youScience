@@ -1,5 +1,11 @@
 # YouScience Code Challenge
 
+## How to run
+
+1. `cd client`
+2. `npm start`
+3. Navigate to `http://localhost:3000/`
+
 This repository is a good React and Express application.
 
 **Fork** this repo on GhitHub (please save as a **private repo**)
@@ -7,7 +13,6 @@ This repository is a good React and Express application.
 When you're finished, please share with @redsnow32
 
 <br />
-
 
 ## Project Setup
 
@@ -18,10 +23,10 @@ The `/backend` directory is where you'll create your nodejs server using express
 If applying for a backend position, use the `/backend`.
 If applying for a frontend, feel free to use both.
 
-This project does not utilize _create-react-app_ so feel free to show us any talents you may have, front end or back end. 
+This project does not utilize _create-react-app_ so feel free to show us any talents you may have, front end or back end.
 
 ## Instructions
 
-See the [Front end instructions](frontend/README.md) for frontend focused instructions. 
+See the [Front end instructions](frontend/README.md) for frontend focused instructions.
 
 See the [Back end instructions](backend/README.md) for backend focused instructions.
