@@ -1,3 +1,32 @@
+# Emily's Completed Front End Code Challenge
+
+- This is a breakdown of functionality for my completed coding challenge.
+
+## Homepage Functionality:
+
+As we discussed in our meeting, I hadn't done any typescript yet, so for my list items I created an array of objects with five different list items(mockData). Each of these items have name, description, status, viewed, and ID.
+
+The mock data is set into state with a two second loading period. This is done by using a use effect hook and a setTimeout on our setter function for the state variable. This mimics our API GET request.
+
+We map through these list items, and return them on the page after the two second loading period.
+Each of these list items is clickable and can open the right side drawer. In addition I have added a trashcan icon that can delete each individual list item. This mocks our API Delete request. The list items also have an indicator to their left that changes color based off of the status of the item (white: 'New', yellow: 'In Progress', red: 'Archived', green: 'Complete'). These status's can be seen by hovering the icon.
+
+There is a 'New Item' button in the buttom lefthand corner. This button will also open our drawer but with default new item values.
+
+## Drawer Functionality:
+
+When the drawer is opened the current list item name and description are in the top bar of the drawer for the user to view. They are also auto filled into the name and description inputs so that if the user is only making slight changes to their item they won't need to retype the entire item. When the name and description are changed the state updates inside of the drawer, but does not update outside until the user clicks done and closes the drawer. Once you have marked your item as 'complete' AND closed the drawer with our done button, you can not change the item status. You can, however, change the status as you wish before clicking done.
+
+Drawer Summary: There are inputs for name(cannot exceed 32varChar), description(cannot exceed 100varChar), status, and viewed. You can also see the item's current name and description. Once the done button is clicked you will get our loader component again to mimic waiting for a response from our 'POST' request.
+
+## Additional Comments
+
+- The front and back end are now called Client/Server
+
+- I used material.ui for the components and styling of the components in this project. It was my first time using material.ui, but I just followed the documentation implementation.
+
+- I also did some work on the backend, setting up a database and express server, and completing some of the routes asked for in the backend assesment.
+
 # FRONT END INSTRUCTIONS
 
 Complete as many items as you can within a reason. If you get stuck, move onto the next item and circle back if needed. There are a few outstanding issues and/or failure to follow best practices with React/Typescript. You can choose to address these first or as you go along.
