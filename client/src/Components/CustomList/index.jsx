@@ -124,13 +124,13 @@ export function CustomList() {
           // use material ui list component for our generated list
           <div key={`${item.name}-${i}`}>
             <Fade in timeout={1500}>
-              <ListItem alignItems={'center'}>
+              <ListItem alignItems={'center'} style={{ cursor: 'pointer' }}>
                 <Tooltip title={item.status}>
                   <CircleIcon fontSize={''} htmlColor={colors[item.status]} />
                 </Tooltip>
                 <ListItemText primary={item.name} onClick={() => handleItemClick(item)} />
                 <Avatar>
-                  <Tooltip title={'Delete'}>
+                  <Tooltip title={`Delete ${item.name}`}>
                     <IconButton aria-label='delete' onClick={() => handleItemDelete(item.id)}>
                       <DeleteIcon />
                     </IconButton>

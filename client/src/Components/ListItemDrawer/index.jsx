@@ -3,11 +3,10 @@
 // https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input
 import React, { useEffect, useState } from 'react';
 import '../../assets/styles/index.css';
-import { Checkbox, Drawer, FormControlLabel, FormLabel, Input, Radio, RadioGroup, FormControl } from '@mui/material';
+import { Checkbox, Drawer, FormControlLabel, FormLabel, Radio, RadioGroup, FormControl } from '@mui/material';
 import { blueGrey, green } from '@mui/material/colors';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
-import { bgcolor, color, margin } from '@mui/system';
 import Button from '@mui/material/Button';
 import LoadingPage from '../LoadingPage/LoadingPage';
 
